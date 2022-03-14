@@ -1,0 +1,123 @@
+.message{
+  padding: 20px 0;
+  background-color: var(--primary);
+  color: var(--foreground);
+  p{
+    width: 92%;
+    margin: 0 auto;
+    max-width: 1080px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 400;
+    strong{
+      font-weight: 700;
+    }
+  }
+}
+
+.flipdown{
+  margin-bottom: 40px;
+}
+
+.sale{
+  /* background: linear-gradient(90deg, #000000 0%, #002017 100%); */
+  background-color: var(--foreground);
+  backdrop-filter: blur(30px);
+  color: var(--secondary);
+  &_cont{
+    width: 92%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 0;
+  }
+  h2{
+    text-align: center;
+    font-weight: 400;
+    font-size: 20px;
+    margin-bottom: 30px;
+    strong{
+      font-weight: 700;
+    }
+  }
+}
+
+.img{
+  max-width: 550px;
+  margin: 0 auto;
+  cursor: pointer;
+}
+
+.price, .price2{
+  display: block;
+  text-align: center;
+}
+
+.price{
+  margin-top: 30px;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 8px;
+  strong{
+    color: var(--primary);
+    font-size: 35px;
+    font-weight: 800;
+  }
+}
+
+.price2{
+  font-size: 18px;
+  font-weight: 400;
+  margin-top: 0px;
+  margin-bottom: 40px;
+  strong{
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--primary);
+  }
+}
+
+.button{
+  animation: wobble 2.5s 1s ease infinite;
+  background-color: var(--primary);
+  border-radius: 5px;
+  border: none;
+  color: var(--foreground);
+  cursor: pointer;
+  display: block;
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0 auto;
+  max-width: 570px;
+  outline: none;
+  padding: 18px 20px;
+  width: 100%;
+  margin-bottom: 20px;
+}
+.payments{
+  position: relative;
+  display: block;
+  max-width: 350px;
+  margin: 0 auto;
+  cursor: pointer;
+}
+
+
+@media screen and (min-width: 800px) {
+  .message{
+    p{
+      font-size: 20px;
+    }
+  }
+}
+
+@keyframes wobble {
+  0% { transform: translateX(0%); }
+  10% { transform: translateX(-5px); }
+  20% { transform: translateX(4px); }
+  30% { transform: translateX(-3px); }
+  40% { transform: translateX(2px); }
+  50% { transform: translateX(0); }
+  100% { transform: translateX(0); }
+}

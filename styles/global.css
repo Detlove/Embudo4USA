@@ -1,0 +1,26 @@
+@import url('./reset.css');
+:root{
+  --primary: #FF6363;
+  --secondary: #010033;
+  --secondary0: rgba(1, 0, 51, 0.95);
+  --foreground: #EDEDED;
+}
+body{
+  font-family: Poppins;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  color: var(--foreground);
+}
+body::-webkit-scrollbar {
+  display: none;
+}
+
+@keyframes wobble {
+  0% { transform: translateX(0%); }
+  10% { transform: translateX(-5px); }
+  20% { transform: translateX(4px); }
+  30% { transform: translateX(-3px); }
+  40% { transform: translateX(2px); }
+  50% { transform: translateX(0); }
+  100% { transform: translateX(0); }
+}

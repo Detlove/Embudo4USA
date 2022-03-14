@@ -1,0 +1,107 @@
+.cont{
+  width: 92%;
+  min-height: 240px;
+  max-width: 500px;
+  margin: 0 auto;
+  opacity: 0;
+  animation: fade 2.5s ease forwards;
+}
+.title{
+  font-size: 19px;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 30px;
+}
+.clock{
+  display: block;
+  margin: 0 auto 30px auto;
+}
+.text{
+  text-align: center;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.gift{
+  display: block;
+  margin: 0 auto;
+  animation: box 2.5s ease infinite;
+  cursor: pointer;
+}
+
+.cont_f{
+  width: 92%;
+  min-height: 230px;
+  max-width: 500px;
+  margin: 0 auto;
+  opacity: 0;
+  animation: fade 2.5s ease forwards;
+}
+.cont_f p {
+  font-size: 18px;
+  font-weight: 400;
+  text-align: center;
+}
+.t2{
+  margin-top: 20px;
+  opacity: 0;
+  animation: fade 2.5s 2.5s ease forwards;
+  margin-bottom: 30px;
+}
+.t2 strong{
+  font-weight: 700;
+}
+
+.price{
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 5px;
+  overflow: hidden;
+  width: 300px;
+  margin: 0 auto;
+  opacity: 0;
+  animation: fade 2.5s 5s ease forwards, wobble 2.5s 1s ease infinite;
+  cursor: pointer;
+}
+.price span{
+  display: block;
+  background-color: rgba(255, 0, 0, 0.4);
+  text-align: center;
+  font-size: 17px;
+  font-weight: 400;
+  padding: 8px;
+}
+.price p{
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 10px;
+}
+.price p strong{
+  font-size: 40px;
+  font-weight: 800;
+}
+
+@keyframes box {
+  30% { transform: scale(1.05); }
+  40%, 60% { transform: rotate(-8deg) scale(1.05); }
+  50% { transform: rotate(8deg) scale(1.05); }
+  70% { transform: rotate(0deg) scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+@keyframes fade {
+  to{
+    opacity: 1
+  }
+}
+
+@keyframes wobble {
+  0% { transform: translateX(0%); }
+  10% { transform: translateX(-5px); }
+  20% { transform: translateX(4px); }
+  30% { transform: translateX(-3px); }
+  40% { transform: translateX(2px); }
+  50% { transform: translateX(0); }
+  100% { transform: translateX(0); }
+}
