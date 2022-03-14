@@ -35,9 +35,9 @@ const Aula = () => {
         <title>Clase {step} | {data[step].title}</title>
       </Head>
       <Analytics />
-      <Background />
       <NotifRequest showIn={4} />
       <main className={styles.cont}>
+        <Background />
         <VisitCounter />
         <ProgressBar />
         <Video />
