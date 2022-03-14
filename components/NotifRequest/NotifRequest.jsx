@@ -14,6 +14,9 @@ export const NotifRequest = ({ showIn }) => {
     if (step === showIn) {
       OneSignal.init({
         appId: `${process.env.NEXT_PUBLIC_ONESIGNAL_ID}`,
+        welcomeNotification: {
+          disable: true
+        },
         allowLocalhostAsSecureOrigin: true
       })
       setPauseVideo(true)
