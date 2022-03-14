@@ -6,5 +6,14 @@ module.exports = {
         destination: '/home/index.html'
       }
     ]
+  },
+  async redirects () {
+    return [
+      {
+        source: '/',
+        destination: '/registrarme-ahora',
+        permanent: true
+      }
+    ]
   }
 }
