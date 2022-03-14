@@ -15,7 +15,7 @@ export const data = {
     id: 684408471,
     title: 'CÓMO IMPORTAR CUALQUIER PRODUCTO DESDE USA',
     thtml: <>CÓMO <span>IMPORTAR CUALQUIER PRODUCTO</span> DESDE USA</>,
-    pntToUnlock: 0.99
+    pntToUnlock: 0.50
   },
   4: {
     id: 684964797,
