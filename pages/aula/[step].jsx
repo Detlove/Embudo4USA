@@ -35,7 +35,7 @@ const Aula = () => {
         <title>Clase {step} | {data[step].title}</title>
       </Head>
       <Analytics />
-      <NotifRequest showIn={4} />
+      <NotifRequest showIn={3} />
       <main className={styles.cont}>
         <Background />
         <VisitCounter />
