@@ -11,6 +11,13 @@ export const Analytics = () => {
     window.fbq('track', 'PageView')
     window.fbq('trackCustom', `Paso${step + 1}`)
     console.log(`Se envio el evento: trackCustom Paso${step + 1}`)
+
+    window.gtag('event', 'page_view', {
+      page_path: `/aula/${step + 1}`,
+      send_to: `${process.env.NEXT_PUBLIC_GTAG_ID}`
+    })
+
+    console.log(`Se envio el evento: page_view /aula/${step + 1}`)
   }
 
   useEffect(() => {

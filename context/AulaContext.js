@@ -16,7 +16,7 @@ export const AulaProvider = (props) => {
 
   useEffect(() => {
     let rStep = parseInt(router.query.step)
-    if (router.isReady/*  && rStep >= 1 && rStep <= 5 */) {
+    if (router.isReady && rStep >= 1 && rStep <= 5) {
       /* Validate that the step is not greater than the data length  */
       rStep === 5 &&
       setShowLanding(true)
