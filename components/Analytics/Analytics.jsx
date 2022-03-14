@@ -19,12 +19,12 @@ export const Analytics = () => {
     return () => {
       router.events.off('routeChangeComplete', pageView)
     }
-  }, [router.events])
+  }, [step, router.events])
 
   return (
     <>
       {/* Google Analytics */}
-      <Script src='https://www.googletagmanager.com/gtag/js?id=UA-221794490-6' />
+      <Script src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GTAG_ID}`} />
       <Script
         id='gtag'
         dangerouslySetInnerHTML={{
