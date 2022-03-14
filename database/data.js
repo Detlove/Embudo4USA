@@ -1,8 +1,8 @@
 export const data = {
   1: {
     id: 684300405,
-    title: 'ESTO ES LO QUE APRENDERÁS EN EL TUTORIAL GRATUITO',
-    thtml: <>ESTO ES <span>LO QUE APRENDERÁS</span> EN EL TUTORIAL GRATUITO</>,
+    title: 'ESTO ES LO QUE APRENDERÁS EN ESTE ENTRENAMIENTO GRATUITO',
+    thtml: <>ESTO ES <span>LO QUE APRENDERÁS</span> EN ESTE ENTRENAMIENTO GRATUITO</>,
     pntToUnlock: 0.95
   },
   2: {
@@ -13,8 +13,8 @@ export const data = {
   },
   3: {
     id: 684408471,
-    title: 'EL PASO A PASO QUE DEBES SEGUIR PARA IMPORTAR CUALQUIER PRODUCTO DESDE USA',
-    thtml: <>EL PASO A PASO QUE DEBES SEGUIR PARA <span>IMPORTAR CUALQUIER PRODUCTO</span> DESDE USA</>,
+    title: 'CÓMO IMPORTAR CUALQUIER PRODUCTO DESDE USA',
+    thtml: <>CÓMO <span>IMPORTAR CUALQUIER PRODUCTO</span> DESDE USA</>,
     pntToUnlock: 0.99
   },
   4: {
