@@ -10,7 +10,6 @@ import { NextLesson } from '@components/NexLesson/NextLesson'
 import { LastStep } from '@components/LastStep/LastStep'
 import { Landing } from '@components/Landing/Landing'
 import { Background } from '@components/Background/Background'
-import { NotifRequest } from '@components/NotifRequest/NotifRequest'
 
 import styles from './aula.module.css'
 
@@ -35,7 +34,6 @@ const Aula = () => {
         <title>Clase {step} | {data[step].title}</title>
       </Head>
       <Analytics />
-      <NotifRequest showIn={3} />
       <main className={styles.cont}>
         <Background />
         <VisitCounter />
