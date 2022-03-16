@@ -6,11 +6,11 @@ import styles from './laststep.module.css'
 import { useState, useEffect } from 'react'
 
 export const LastStep = () => {
-  const { router, unlock, step, showLanding } = useAula()
+  const { router, unlock, step, rStep } = useAula()
   const [iStep, setIStep] = useState(1)
 
   useEffect(() => {
-    showLanding &&
+    rStep === 5 &&
     setIStep(3)
   }, [step])
 

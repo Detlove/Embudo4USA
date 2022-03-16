@@ -1,0 +1,45 @@
+//RESET CONFIGS
+@import 'library/RESET';
+
+//VARIABLES
+$primary: #FF6363;
+$secondary: #020061;
+$foreground: #EDEDED;
+
+
+//STYLES
+
+body {
+  font-family : Poppins;
+  color: $foreground;
+
+  font-smooth: always;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+main{
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  .bg{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: -1;
+    overflow: hidden;
+    img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+}
+
+@import '1Top';
+@import '2Present';
+@import '3Copy'

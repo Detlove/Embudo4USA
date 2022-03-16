@@ -8,23 +8,22 @@ export const AulaProvider = (props) => {
   const router = useRouter()
 
   const [step, setStep] = useState(0)
+  const [rStep, setRStep] = useState(0)
   const [unlock, setUnlock] = useState(false)
-  const [showLanding, setShowLanding] = useState(false)
   const [pauseVideo, setPauseVideo] = useState(false)
 
   const dataLength = Object.keys(data).length
 
   useEffect(() => {
-    let rStep = parseInt(router.query.step)
-    if (router.isReady && rStep >= 1 && rStep <= 5) {
-      /* Validate that the step is not greater than the data length  */
-      rStep === 5 &&
-      setShowLanding(true)
+    let lStep = parseInt(router.query.step)
+    if (router.isReady && lStep >= 1 && lStep <= 5) {
+      setRStep(lStep)
 
-      rStep = rStep > dataLength
+      lStep = lStep > dataLength
         ? dataLength
-        : rStep
-      setStep(rStep)
+        : lStep
+
+      setStep(lStep)
     } else if (router.isReady) {
       router.push('/aula/1')
     }
@@ -37,13 +36,12 @@ export const AulaProvider = (props) => {
   const value = {
     dataLength,
     data,
+    rStep,
     step,
     setStep,
     unlock,
     setUnlock,
     router,
-    showLanding,
-    setShowLanding,
     pauseVideo,
     setPauseVideo
   }

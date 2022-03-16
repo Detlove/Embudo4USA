@@ -23,6 +23,13 @@ export const Video = () => {
     setFinish(true)
   }
 
+  const onSeeked = ({ percent }) => {
+    const pnt = (percent * 100).toFixed(1)
+    console.log(`Event: Player to ${pnt}%`)
+    /* Send Event to Google Tag Manager */
+    window.dataLayer.push({ event: 'seek_player', to: pnt })
+  }
+
   return (
     <section className={styles.cont}>
       <h1 className={styles.title}>{data[step].thtml}
@@ -36,6 +43,7 @@ export const Video = () => {
         showByline={false}
         autoplay
         color='FF6363'
+        paused={pauseVideo}
         onPlay={() => {
           if (pauseVideo) {
             setPauseVideo(false)
@@ -49,9 +57,9 @@ export const Video = () => {
         onReady={() => {
           setLoader(false)
         }}
+        onSeeked={onSeeked}
         onTimeUpdate={onTimeUpdate}
         onEnd={hidePlayer}
-        paused={pauseVideo}
       />
     </section>
   )

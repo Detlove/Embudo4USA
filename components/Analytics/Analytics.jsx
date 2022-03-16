@@ -1,46 +1,19 @@
 import Script from 'next/script'
-import { useRouter } from 'next/router'
-import { useEffect } from 'react'
-import { useAula } from '@context/AulaContext'
 
 export const Analytics = () => {
-  const router = useRouter()
-  const { step } = useAula()
-
-  const pageView = () => {
-    window.fbq('track', 'PageView')
-    window.fbq('trackCustom', `Paso${step + 1}`)
-    console.log(`Se envio el evento: trackCustom Paso${step + 1}`)
-
-    window.gtag('event', 'page_view', {
-      page_path: `/aula/${step + 1}`,
-      send_to: `${process.env.NEXT_PUBLIC_GTAG_ID}`
-    })
-
-    console.log(`Se envio el evento: page_view /aula/${step + 1}`)
-  }
-
-  useEffect(() => {
-    // the below will only fire on route changes (not initial load - that is handled in the script below)
-    router.events.on('routeChangeComplete', pageView)
-    return () => {
-      router.events.off('routeChangeComplete', pageView)
-    }
-  }, [step, router.events])
-
   return (
     <>
-      {/* Google Analytics */}
-      <Script src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GTAG_ID}`} />
+      {/* Google Tag Manager */}
       <Script
         id='gtag'
         dangerouslySetInnerHTML={{
           __html: `
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', '${process.env.NEXT_PUBLIC_GTAG_ID}');
-            `
+            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer','${process.env.NEXT_PUBLIC_GTAG_ID}');
+          `
         }}
       />
       {/* Facebook Pixel */}
@@ -57,8 +30,6 @@ export const Analytics = () => {
           s.parentNode.insertBefore(t,s)}(window, document,'script',
           'https://connect.facebook.net/en_US/fbevents.js');
           fbq('init', ${process.env.NEXT_PUBLIC_FACEBOOK_PIXEL});
-          fbq('track', 'PageView');
-          fbq('track', 'Lead');
         `
         }}
       />

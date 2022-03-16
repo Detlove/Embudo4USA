@@ -1,7 +1,6 @@
 import Head from 'next/head'
 import { AulaProvider, useAula } from '@context/AulaContext'
-
-import { Analytics } from '@components/Analytics/Analytics'
+import { useEffect } from 'react'
 
 import { ProgressBar } from '@components/ProgressBar/ProgressBar'
 import { VisitCounter } from '@components/VisitCounter/VisitCounter'
@@ -25,15 +24,22 @@ const Aula = () => {
   const {
     data,
     step,
-    showLanding
+    rStep
   } = useAula()
+
+  useEffect(() => {
+    /* Send Facebook Page Views */
+    step === 1 && window.fbq('track', 'ViewContent')
+    window.fbq('track', 'PageView')
+
+    step > 1 && window.fbq('trackCustom', `Paso${rStep}`)
+  }, [rStep])
 
   return (
     <>
       <Head>
         <title>Clase {step} | {data[step].title}</title>
       </Head>
-      <Analytics />
       <main className={styles.cont}>
         <Background />
         <VisitCounter />
@@ -49,7 +55,7 @@ const Aula = () => {
         }
       </main>
       {
-        showLanding &&
+        rStep === 5 &&
           <Landing />
       }
     </>

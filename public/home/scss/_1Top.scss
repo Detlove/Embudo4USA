@@ -1,0 +1,22 @@
+.top{
+  background-color: $foreground;
+  color: $secondary;
+  padding: 14px 0;
+  font-size: 17px;
+  span{
+    display: block;
+    width: 92%;
+    margin: 0 auto;
+    text-align: center;
+    font-weight: 400;
+    strong{
+      font-weight: 600;
+    }
+  }
+}
+
+@media screen and (min-width: 800px){
+  .top{
+    font-size: 20px;
+  }
+}
