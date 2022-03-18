@@ -1,19 +1,45 @@
 import Script from 'next/script'
+import { useEffect } from 'react'
+import { useAula } from '@context/AulaContext'
 
 export const Analytics = () => {
+  const { step, rStep, data } = useAula()
+  const { pageTitle } = data[step]
+
+  useEffect(() => {
+    /* Send Facebook Page Views */
+    window.fbq('track', 'PageView')
+
+    console.log({
+      page_title: pageTitle,
+      page_location: `${document.URL}`,
+      send_to: `${process.env.NEXT_PUBLIC_GA4_ID}`
+    })
+
+    /* Send Analytics Page Views */
+    window.gtag('event', 'page_view', {
+      page_title: pageTitle,
+      page_location: `${document.URL}`,
+      send_to: `${process.env.NEXT_PUBLIC_GA4_ID}`
+    })
+  }, [rStep])
+
   return (
     <>
-      {/* Google Tag Manager */}
+      {/* Google Analytics 4 */}
+      <Script src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA4_ID}`} />
       <Script
-        id='gtag'
+        id='ga4'
         dangerouslySetInnerHTML={{
           __html: `
-            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-            })(window,document,'script','dataLayer','${process.env.NEXT_PUBLIC_GTAG_ID}');
-          `
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', '${process.env.NEXT_PUBLIC_GA4_ID}', {
+            send_page_view: false,
+            debug_mode: true
+          });
+        `
         }}
       />
       {/* Facebook Pixel */}
