@@ -32,7 +32,7 @@
   background-color: rgb(0, 0, 0);
 }
 .hide::before{
-  content: 'La clase ha terminado, presiona el boton para ir a la siguiente clase';
+  content: 'La clase ha terminado, presiona el botón para ir a la siguiente clase';
   position: absolute;
   z-index: 2;
   width: 80%;

@@ -1,0 +1,7 @@
+.cont{
+  width: 92%;
+  max-width: 420px;
+  margin: 0 auto;
+  position: relative;
+  min-height: 240px;
+}

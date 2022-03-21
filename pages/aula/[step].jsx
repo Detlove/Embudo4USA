@@ -1,15 +1,13 @@
 import Head from 'next/head'
+import { useEffect } from 'react'
 import { AulaProvider, useAula } from '@context/AulaContext'
-
-import { Analytics } from '@components/Analytics/Analytics'
 
 import { ProgressBar } from '@components/ProgressBar/ProgressBar'
 import { VisitCounter } from '@components/VisitCounter/VisitCounter'
 import { Video } from '@components/Video/Video'
-import { NextLesson } from '@components/NexLesson/NextLesson'
-import { LastStep } from '@components/LastStep/LastStep'
 import { Landing } from '@components/Landing/Landing'
 import { Background } from '@components/Background/Background'
+import { VideoBottom } from '@components/VideoBottom/VideoBottom'
 
 import styles from './aula.module.css'
 
@@ -25,31 +23,41 @@ const Aula = () => {
   const {
     data,
     step,
-    showLanding
+    rStep
   } = useAula()
+
+  const { pageTitle } = data[step]
+
+  /* Send Page Views */
+  useEffect(() => {
+    window.fbq('track', 'PageView')
+
+    window.gtag('event', 'page_view', {
+      page_title: pageTitle,
+      page_location: document.URL,
+      send_to: `${process.env.NEXT_PUBLIC_GTAG_ID}`
+    })
+
+    rStep === 1 && window.fbq('track', 'Lead')
+    rStep > 1 && window.fbq('trackCustom', `Paso${rStep}`)
+  }, [rStep])
 
   return (
     <>
       <Head>
-        <title>Clase {step} | {data[step].title}</title>
+        <title>{pageTitle}</title>
       </Head>
-      <Analytics />
-      <main className={styles.cont}>
+      <main className={styles.section}>
         <Background />
         <VisitCounter />
-        <ProgressBar />
-        <Video />
-        {
-          step < 4 &&
-            <NextLesson />
-        }
-        {
-          step >= 4 &&
-            <LastStep />
-        }
+        <section className={styles.cont}>
+          <ProgressBar />
+          <Video />
+          <VideoBottom />
+        </section>
       </main>
       {
-        showLanding &&
+        rStep === 5 &&
           <Landing />
       }
     </>

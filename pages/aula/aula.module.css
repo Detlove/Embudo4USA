@@ -1,6 +1,9 @@
-.cont{
+.section{
   color: var(--foreground);
-  padding: 40px 0 50px 0;
   position: relative;
   min-height: 100vh;
+}
+
+.cont{
+  padding: 40px 0 50px 0;
 }

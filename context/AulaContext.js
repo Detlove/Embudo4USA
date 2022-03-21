@@ -7,45 +7,48 @@ const AulaContext = createContext()
 export const AulaProvider = (props) => {
   const router = useRouter()
 
-  const [step, setStep] = useState(0)
+  const [step, setStep] = useState(1)
+  const [rStep, setRStep] = useState(0)
   const [unlock, setUnlock] = useState(false)
-  const [showLanding, setShowLanding] = useState(false)
   const [pauseVideo, setPauseVideo] = useState(false)
 
   const dataLength = Object.keys(data).length
 
-  useEffect(() => {
-    let rStep = parseInt(router.query.step)
-    if (router.isReady && rStep >= 1 && rStep <= 5) {
-      /* Validate that the step is not greater than the data length  */
-      rStep === 5 &&
-      setShowLanding(true)
+  const goPurchase = (source) => {
+    window.open(`${process.env.NEXT_PUBLIC_HOTMART_LINK}&src=${source}`, '_blank')
+  }
 
-      rStep = rStep > dataLength
+  useEffect(() => {
+    let lStep = parseInt(router.query.step)
+    if (router.isReady && lStep >= 1 && lStep <= 5) {
+      setRStep(lStep)
+
+      lStep = lStep > dataLength
         ? dataLength
-        : rStep
-      setStep(rStep)
+        : lStep
+
+      setStep(lStep)
     } else if (router.isReady) {
       router.push('/aula/1')
     }
   }, [router])
 
-  if (!step) {
+  /* if (!step) {
     return null
-  }
+  } */
 
   const value = {
     dataLength,
     data,
+    rStep,
     step,
     setStep,
     unlock,
     setUnlock,
     router,
-    showLanding,
-    setShowLanding,
     pauseVideo,
-    setPauseVideo
+    setPauseVideo,
+    goPurchase
   }
 
   return <AulaContext.Provider value={value} {...props} />

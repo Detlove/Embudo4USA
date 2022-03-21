@@ -9,7 +9,6 @@ body{
   font-family: Poppins;
   -ms-overflow-style: none;
   scrollbar-width: none;
-  color: var(--foreground);
 }
 body::-webkit-scrollbar {
   display: none;
