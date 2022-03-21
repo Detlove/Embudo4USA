@@ -14,6 +14,10 @@ export const AulaProvider = (props) => {
 
   const dataLength = Object.keys(data).length
 
+  const goPurchase = (source) => {
+    window.open(`${process.env.NEXT_PUBLIC_HOTMART_LINK}&src=${source}`, '_blank')
+  }
+
   useEffect(() => {
     let lStep = parseInt(router.query.step)
     if (router.isReady && lStep >= 1 && lStep <= 5) {
@@ -43,7 +47,8 @@ export const AulaProvider = (props) => {
     setUnlock,
     router,
     pauseVideo,
-    setPauseVideo
+    setPauseVideo,
+    goPurchase
   }
 
   return <AulaContext.Provider value={value} {...props} />

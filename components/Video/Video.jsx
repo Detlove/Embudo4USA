@@ -3,66 +3,92 @@ import { useState } from 'react'
 import { useAula } from '@context/AulaContext'
 import { useApp } from '@context/AppContext'
 
+import { motion, AnimatePresence } from 'framer-motion'
+
 import styles from './video.module.css'
 export const Video = () => {
-  const { setUnlock, data, step, pauseVideo, setPauseVideo } = useAula()
+  const { setUnlock, data, step, pauseVideo } = useAula()
+  const { id, pageTitle } = data[step]
 
   const { setLoader } = useApp()
-
-  const [ready, setReady] = useState(false)
   const [finish, setFinish] = useState(false)
 
   const onTimeUpdate = ({ percent }) => {
-    if (ready & percent > data[step].pntToUnlock) {
+    if (percent > data[step].pntToUnlock) {
       setUnlock(true)
-      setReady(false)
     }
   }
 
-  const hidePlayer = () => {
+  const onEnd = () => {
     setFinish(true)
   }
 
   const onSeeked = ({ percent }) => {
     const pnt = (percent * 100).toFixed(1)
-    console.log(`Event: Player to ${pnt}%`)
     /* Send Event to Analytics */
     window.gtag('event', 'seek_player', {
-      to: pnt
+      value: pnt,
+      page_title: pageTitle,
+      page_location: document.URL
     })
   }
 
+  const variants = {
+    enter: {
+      opacity: 0,
+      x: '3%'
+    },
+    center: {
+      opacity: 1,
+      x: 0
+    },
+    exit: {
+      opacity: 0,
+      x: '-3%'
+    }
+  }
+
   return (
-    <section className={styles.cont}>
-      <h1 className={styles.title}>{data[step].thtml}
-      </h1>
-      <Vimeo
-        video={data[step].id}
-        className={`${styles.player} ${finish ? styles.hide : ''}`}
-        controls={false}
-        showPortrait={false}
-        showTitle={false}
-        showByline={false}
-        autoplay
-        color='FF6363'
-        paused={pauseVideo}
-        onPlay={() => {
-          if (pauseVideo) {
-            setPauseVideo(false)
-            setPauseVideo(true)
-          }
+    <AnimatePresence
+      exitBeforeEnter
+      /* initial={false} */
+      onExitComplete={() => {
+        setFinish(false)
+        setUnlock(false)
+      }}
+    >
+      <motion.section
+        className={styles.cont}
+        key={id}
+        initial='enter'
+        animate='center'
+        exit='exit'
+        variants={variants}
+        transition={{
+          type: 'spring',
+          duration: 0.5
         }}
-        onLoaded={() => {
-          setReady(true)
-          setFinish(false)
-        }}
-        onReady={() => {
-          setLoader(false)
-        }}
-        onSeeked={onSeeked}
-        onTimeUpdate={onTimeUpdate}
-        onEnd={hidePlayer}
-      />
-    </section>
+      >
+        <h1 className={styles.title}>{data[step].thtml}
+        </h1>
+        <Vimeo
+          video={id}
+          className={`${styles.player} ${finish ? styles.hide : ''}`}
+          controls={false}
+          showPortrait={false}
+          showTitle={false}
+          showByline={false}
+          autoplay={!pauseVideo}
+          color='FF6363'
+          paused={pauseVideo}
+          onReady={() => {
+            setLoader(false)
+          }}
+          onSeeked={onSeeked}
+          onTimeUpdate={onTimeUpdate}
+          onEnd={onEnd}
+        />
+      </motion.section>
+    </AnimatePresence>
   )
 }

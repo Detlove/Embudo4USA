@@ -1,9 +1,12 @@
+import { useAula } from '@context/AulaContext'
 import Script from 'next/script'
 import Head from 'next/head'
-import styles from './landing.module.scss'
 import Image from 'next/image'
 
+import styles from './landing.module.scss'
+
 export const Landing = () => {
+  const { goPurchase } = useAula()
   return (
     <>
       <Head>
@@ -19,9 +22,7 @@ export const Landing = () => {
           <h2>¿ESTÁS LISTO PARA <strong>IMPORTAR TUS PRODUCTOS DESDE USA?</strong></h2>
           <picture
             className={styles.img}
-            onClick={() => {
-              window.open(`${process.env.NEXT_PUBLIC_HOTMART_LINK}&src=mockup`, '_blank')
-            }}
+            onClick={() => goPurchase('mockup')}
           >
             <Image src='/assets/box.png' width={600} height={445} layout='responsive' />
           </picture>
@@ -29,9 +30,7 @@ export const Landing = () => {
           <span className={styles.price2}>o en 12 cuotas de <strong>$8 USD</strong></span>
           <button
             className={styles.button}
-            onClick={() => {
-              window.open(`${process.env.NEXT_PUBLIC_HOTMART_LINK}&src=button_ready`, '_blank')
-            }}
+            onClick={() => goPurchase('btn2')}
           >
             !ESTOY LISTO, PARA DUPLICAR MIS VENTAS!
           </button>
@@ -40,9 +39,7 @@ export const Landing = () => {
               src='/assets/payments.png'
               width={569}
               height={77}
-              onClick={() => {
-                window.open(`${process.env.NEXT_PUBLIC_HOTMART_LINK}&src=payments`, '_blank')
-              }}
+              onClick={() => goPurchase('payments')}
             />
           </picture>
         </div>

@@ -1,6 +1,9 @@
 .main{
   position: relative;
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 .bg{
   position: absolute;
@@ -15,4 +18,5 @@
 }
 
 @import '1Top';
-@import '2Present'
+@import '2Present';
+@import '3Copy';

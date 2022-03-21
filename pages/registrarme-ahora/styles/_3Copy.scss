@@ -1,9 +1,9 @@
 .copy{
-  background-color: $foreground;
+  background-color: var(--foreground);
   span{
     display: block;
     text-align: center;
-    color: $secondary;
+    color: var(--secondary);
     font-weight: 400;
     font-size: 14px;
     padding: 10px 0;

@@ -12,7 +12,7 @@ export const VisitCounter = ({ min = 101, max = 115 }) => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCounter(Math.floor(Math.random() * (min - max) + max))
-    }, 12000)
+    }, 15000)
     return () => clearInterval(interval)
   }, [counter])
 
