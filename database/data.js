@@ -9,14 +9,14 @@ export const data = {
   2: {
     pageTitle: 'Clase 2 | ¿Por qué deberías importar de Estados Unidos?',
     id: 684402660,
-    title: '¿POR QUÉ DEBERÍAS IMPORTAR DE ESTADOS UNIDOS?',
+    title: '🤔 ¿POR QUÉ DEBERÍAS IMPORTAR DE ESTADOS UNIDOS?',
     thtml: <>¿POR QUÉ <span>DEBERÍAS IMPORTAR</span> DE ESTADOS UNIDOS?</>,
     pntToUnlock: 0.95
   },
   3: {
     pageTitle: 'Clase 3 | El paso a paso exacto para importar tus productos de USA',
     id: 684408471,
-    title: 'El paso a paso exacto para importar tus productos de USA',
+    title: '🚢 EL PASO A PASO EXACTO PARA IMPORTAR TUS PRODUCTOS DE USA',
     thtml: <>El <span>paso a paso exacto</span> para importar tus productos de USA</>,
     pntToUnlock: 0.50
   },
