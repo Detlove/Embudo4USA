@@ -7,7 +7,7 @@ const AulaContext = createContext()
 export const AulaProvider = (props) => {
   const router = useRouter()
 
-  const [step, setStep] = useState(1)
+  const [step, setStep] = useState(0)
   const [rStep, setRStep] = useState(0)
   const [unlock, setUnlock] = useState(false)
   const [pauseVideo, setPauseVideo] = useState(false)
@@ -33,9 +33,9 @@ export const AulaProvider = (props) => {
     }
   }, [router])
 
-  /* if (!step) {
+  if (!rStep) {
     return null
-  } */
+  }
 
   const value = {
     dataLength,
