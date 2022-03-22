@@ -25,7 +25,7 @@ export const VideoBottom = () => {
   return (
     <AnimatePresence
       exitBeforeEnter
-      /* initial={false} */
+      initial={false}
     >
       <motion.section
         className={styles.cont}
