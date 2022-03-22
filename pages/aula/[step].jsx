@@ -11,10 +11,10 @@ import { VideoBottom } from '@components/VideoBottom/VideoBottom'
 
 import styles from './aula.module.css'
 
-export default ({ setLoader }) => {
+export default (props) => {
   return (
-    <AulaProvider {...{ setLoader }}>
-      <Aula />
+    <AulaProvider>
+      <Aula {...props} />
     </AulaProvider>
   )
 }

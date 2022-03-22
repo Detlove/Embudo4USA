@@ -3,10 +3,10 @@ import '@styles/global.css'
 import { AppProvider } from '@context/AppContext.js'
 import Script from 'next/script'
 
-export default ({ Component, pageProps }) => {
+export default (props) => {
   return (
     <AppProvider>
-      <MyApp {...{ Component, pageProps }} />
+      <MyApp {...props} />
     </AppProvider>
   )
 }
