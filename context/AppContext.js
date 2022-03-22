@@ -1,13 +1,10 @@
-import { createContext, useContext, useState } from 'react'
+import { createContext, useContext } from 'react'
 
 const AppContext = createContext()
 
 export const AppProvider = (props) => {
-  const [loader, setLoader] = useState(false)
-
   const value = {
-    setLoader,
-    loader
+    //
   }
   return <AppContext.Provider value={value} {...props} />
 }

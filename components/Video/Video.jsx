@@ -1,7 +1,6 @@
 import Vimeo from '@u-wave/react-vimeo'
 import { useState } from 'react'
 import { useAula } from '@context/AulaContext'
-import { useApp } from '@context/AppContext'
 
 import { motion, AnimatePresence } from 'framer-motion'
 
@@ -10,7 +9,6 @@ export const Video = () => {
   const { setUnlock, data, step, pauseVideo } = useAula()
   const { id, pageTitle } = data[step]
 
-  const { setLoader } = useApp()
   const [finish, setFinish] = useState(false)
 
   const onTimeUpdate = ({ percent }) => {
@@ -51,7 +49,7 @@ export const Video = () => {
   return (
     <AnimatePresence
       exitBeforeEnter
-      /* initial={false} */
+      initial={false}
       onExitComplete={() => {
         setFinish(false)
         setUnlock(false)
@@ -81,9 +79,6 @@ export const Video = () => {
           autoplay={!pauseVideo}
           color='FF6363'
           paused={pauseVideo}
-          onReady={() => {
-            setLoader(false)
-          }}
           onSeeked={onSeeked}
           onTimeUpdate={onTimeUpdate}
           onEnd={onEnd}
