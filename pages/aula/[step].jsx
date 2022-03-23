@@ -1,5 +1,4 @@
 import Head from 'next/head'
-import { useEffect } from 'react'
 import { AulaProvider, useAula } from '@context/AulaContext'
 
 import { ProgressBar } from '@components/ProgressBar/ProgressBar'
@@ -27,20 +26,6 @@ const Aula = () => {
   } = useAula()
 
   const { pageTitle } = data[step]
-
-  /* Send Page Views */
-  useEffect(() => {
-    window.fbq('track', 'PageView')
-
-    window.gtag('event', 'page_view', {
-      page_title: pageTitle,
-      page_location: document.URL,
-      send_to: `${process.env.NEXT_PUBLIC_GTAG_ID}`
-    })
-
-    rStep === 1 && window.fbq('track', 'Lead')
-    rStep > 1 && window.fbq('trackCustom', `Paso${rStep}`)
-  }, [rStep])
 
   return (
     <>

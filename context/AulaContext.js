@@ -33,6 +33,22 @@ export const AulaProvider = (props) => {
     }
   }, [router])
 
+  /* Send Page Views */
+  useEffect(() => {
+    if (rStep) {
+      window.fbq('track', 'PageView')
+
+      window.gtag('event', 'page_view', {
+        page_title: data[step].pageTitle,
+        page_location: document.URL,
+        send_to: `${process.env.NEXT_PUBLIC_GTAG_ID}`
+      })
+
+      rStep === 1 && window.fbq('track', 'Lead')
+      rStep > 1 && window.fbq('trackCustom', `Paso${rStep}`)
+    }
+  }, [rStep])
+
   if (!rStep) {
     return null
   }
