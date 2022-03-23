@@ -53,7 +53,7 @@ export const LastStep = (props) => {
   }
 
   const handleGiftClick = () => {
-    router.push('/aula/[step]', '/aula/5', {
+    router.replace('/aula/[step]', '/aula/5', {
       scroll: false
     })
   }
