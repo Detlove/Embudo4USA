@@ -47,7 +47,7 @@ export const NextLesson = (props) => {
 
   const goNext = () => {
     unlock
-      ? router.push('/aula/[step]', `/aula/${step + 1}`, {
+      ? router.replace('/aula/[step]', `/aula/${step + 1}`, {
           scroll: false
         })
       : lockTry.start({

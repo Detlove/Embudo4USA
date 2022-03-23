@@ -20,7 +20,7 @@ const Registrarme = () => {
   }, [])
 
   const goAula = () => {
-    router.push('/aula/[step]', '/aula/1')
+    router.replace('/aula/[step]', '/aula/1')
   }
   return (
     <>
